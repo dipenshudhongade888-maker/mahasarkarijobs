@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0b2545"/>
+<title>MahaSarkariJobs — सरकारी भरती 2026</title>
+
+<style>
+:root{
+  --navy:#0b2545; --navy2:#143a66; --saffron:#f4732a;
+  --bg:#f2f5f9; --card:#fff; --ink:#1b2334; --muted:#64707f;
+  --line:#e3e8ef; --red:#c0392b; --amber:#b9770e; --green:#1a7a4a;
+  --wa:#25d366; --shadow:0 6px 22px rgba(11,37,69,.10);
+  --radius:14px;
+}
+body.dark{
+  --bg:#0d1117; --card:#161b22; --ink:#e6edf3; --muted:#8b949e;
+  --line:#2b3138; --navy:#58a6ff; --navy2:#1f6feb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans Devanagari','Mukta',system-ui,sans-serif;
+  background:var(--bg); color:var(--ink); transition:background .3s,color .3s;
+  -webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit}
+
+/* ============ PREMIUM LOGO ANIMATIONS ============ */
+.logo-container {
+  height: 64px;
+  width: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatLogo 4s ease-in-out infinite;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.logo-wrap {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  animation: glowPulse 2.5s infinite alternate;
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-container:hover .logo-img {
+  transform: scale(1.1);
+}
+
+.logo-shine {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0) 100%);
+  transform: rotate(45deg);
+  animation: shineSweep 4s infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.live-dot {
+  position: absolute; bottom: 0px; right: 0px;
+  width: 14px; height: 14px; background-color: #ff3b30;
+  border: 2px solid #fff; border-radius: 50%;
+  animation: blink 1s infinite; z-index: 3;
+  box-shadow: 0 0 10px rgba(255, 59, 48, 0.8);
+}
+
+@keyframes floatLogo { 
+  0%, 100% { transform: translateY(0); } 
+  50% { transform: translateY(-5px); } 
+}
+@keyframes glowPulse { 
+  0% { filter: drop-shadow(0 0 6px rgba(244,115,42,0.5)); } 
+  100% { filter: drop-shadow(0 0 18px rgba(244,115,42,1)); } 
+}
+@keyframes shineSweep { 
+  0% { left: -150%; } 
+  20% { left: 150%; } 
+  100% { left: 150%; } 
+}
+@keyframes blink { 
+  0%, 100% { opacity: 1; transform: scale(1); } 
+  50% { opacity: 0.3; transform: scale(0.8); } 
+}
+
+/* HEADER */
+header{background:linear-gradient(120deg,var(--navy),var(--navy2));
+  color:#fff; padding:14px 22px; display:flex; flex-wrap:wrap; gap:12px;
+  align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50;
+  box-shadow:0 2px 14px rgba(0,0,0,.12)}
+.brand{display:flex; align-items:center; gap:12px}
+h1{font-size:1.3rem;line-height:1.1}
+.tag{font-size:.74rem;opacity:.85;margin-top:2px}
+.header-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{width:42px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.12);color:#fff;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .2s}
+.icon-btn:hover{background:rgba(255,255,255,.24)}
+
+/* NAV */
+.desktop-nav{display:flex;gap:16px;align-items:center}
+.desktop-nav a{color:#fff;font-size:.86rem;font-weight:600;opacity:.88}
+.desktop-nav a:hover{opacity:1;text-decoration:underline}
+.menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;
+  width:44px;height:44px;padding:10px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.28);border-radius:10px;cursor:pointer}
+.hamburger-line{display:block;width:22px;height:2px;background:#fff;border-radius:2px;
+  transition:transform .25s,opacity .2s}
+body.menu-open .hamburger-line:nth-child(1){transform:translateY(7px) rotate(45deg)}
+body.menu-open .hamburger-line:nth-child(2){opacity:0}
+body.menu-open .hamburger-line:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:0;right:0;width:min(320px,86vw);height:100vh;
+  background:var(--navy);color:#fff;padding:20px 16px;z-index:100;
+  box-shadow:-8px 0 24px rgba(0,0,0,.25);transform:translateX(100%);
+  transition:transform .28s ease;overflow-y:auto}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu-close{position:absolute;top:14px;right:14px;background:none;border:none;
+  color:#fff;font-size:1.5rem;cursor:pointer}
+.mobile-menu nav{display:flex;flex-direction:column;gap:6px;margin-top:34px}
+.mobile-link{display:flex;align-items:center;gap:10px;color:#fff;font-size:1rem;
+  font-weight:600;padding:14px 12px;border-radius:10px}
+.mobile-link:hover{background:rgba(255,255,255,.12)}
+
+@media(max-width:768px){
+  .desktop-nav{display:none} .menu-toggle{display:flex} .mobile-menu{display:block}
+  header,.hero,.urgent-wrap,.controls-wrap,.grid,footer,.bottom-cta,.slabel,.empty{padding-left:14px;padding-right:14px}
+  .logo-container{height: 50px;}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#0b2545 0%,#143a66 55%,#f4732a22 100%);
+  color:#fff; padding:34px 22px 40px; position:relative; overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 85% 20%,rgba(244,115,42,.35),transparent 55%),
+  radial-gradient(circle at 10% 80%,rgba(244,115,42,.18),transparent 55%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.22);padding:6px 14px;border-radius:999px;
+  font-size:.78rem;font-weight:700;margin-bottom:14px}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 0 rgba(74,222,128,.7);
+  animation:pulseDot 1.8s infinite}
+@keyframes pulseDot{0%{box-shadow:0 0 0 0 rgba(74,222,128,.7)}
+  70%{box-shadow:0 0 0 10px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+.hero h2{font-size:clamp(1.5rem,4.5vw,2.3rem);line-height:1.2;margin-bottom:10px;letter-spacing:-.01em}
+.hero h2 span{color:#ffd6b8}
+.hero-sub{font-size:.95rem;opacity:.92;max-width:620px;line-height:1.6;margin-bottom:22px}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;
+  max-width:620px;margin-bottom:22px}
+.stat{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;padding:12px 14px;backdrop-filter:blur(4px)}
+.stat b{display:block;font-size:1.5rem;line-height:1.1}
+.stat small{font-size:.75rem;opacity:.85}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+.btn-hero{padding:12px 22px;border-radius:11px;font-weight:800;font-size:.92rem;
+  cursor:pointer;border:none;transition:transform .15s,box-shadow .2s;display:inline-flex;
+  align-items:center;gap:8px}
+.btn-hero:active{transform:scale(.97)}
+.btn-primary{background:var(--saffron);color:#fff;box-shadow:0 4px 14px rgba(244,115,42,.4)}
+.btn-primary:hover{box-shadow:0 6px 20px rgba(244,115,42,.55)}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+/* URGENT STRIP */
+.urgent-wrap{background:var(--card);border-bottom:1px solid var(--line);padding:12px 22px;margin-top:8px}
+.urgent-title{font-size:.82rem;font-weight:800;color:var(--red);margin-bottom:8px;
+  display:flex;align-items:center;gap:6px}
+.strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.chip{flex:0 0 auto;min-width:210px;border-radius:10px;padding:9px 14px;border:1px solid;font-size:.8rem}
+.chip b{display:block;font-size:.84rem}
+.chip .d{font-weight:800}
+.c-red{background:#fdecea;border-color:#f5b7b1;color:var(--red);animation:pulse 1.6s infinite}
+body.dark .c-red{background:#3d1a1a;border-color:#6b2020;color:#fca5a5}
+.c-amber{background:#fef5e7;border-color:#f0d9b5;color:var(--amber)}
+body.dark .c-amber{background:#3d2f1a;border-color:#6b5220;color:#fbbf24}
+.c-yellow{background:#fdf9e6;border-color:#eee3ab;color:#8a7a1a}
+body.dark .c-yellow{background:#3d381a;border-color:#6b6220;color:#eab308}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(192,57,43,.3)}50%{box-shadow:0 0 0 7px rgba(192,57,43,0)}}
+
+/* CONTROLS */
+.controls-wrap{background:var(--bg);position:sticky;top:74px;z-index:40;
+  border-bottom:1px solid var(--line);padding:12px 22px}
+.controls{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+#q{flex:1 1 260px;padding:11px 16px;border:1px solid var(--line);border-radius:11px;
+  font-size:.95rem;font-family:inherit;background:var(--card);color:var(--ink);outline:none}
+#q:focus{border-color:var(--saffron);box-shadow:0 0 0 3px rgba(244,115,42,.15)}
+.tabs{display:flex;gap:6px;background:var(--card);border:1px solid var(--line);
+  border-radius:11px;padding:4px}
+.tab{border:none;background:none;padding:8px 14px;border-radius:8px;font-size:.82rem;
+  font-weight:700;color:var(--muted);cursor:pointer;white-space:nowrap;transition:.15s}
+.tab.active{background:var(--navy);color:#fff}
+body.dark .tab.active{color:#0d1117}
+.tab .cnt{display:inline-block;background:rgba(0,0,0,.12);padding:1px 7px;border-radius:999px;
+  font-size:.72rem;margin-left:4px}
+.tab.active .cnt{background:rgba(255,255,255,.25)}
+select.sort{padding:10px 14px;border:1px solid var(--line);border-radius:11px;
+  background:var(--card);color:var(--ink);font-size:.85rem;font-weight:600;
+  font-family:inherit;cursor:pointer;outline:none}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.fbtn{border:1px solid var(--line);background:var(--card);border-radius:999px;
+  padding:8px 14px;font-size:.8rem;cursor:pointer;font-weight:600;color:var(--ink);transition:.15s}
+.fbtn.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+body.dark .fbtn.on{color:#0d1117}
+.fbtn:hover:not(.on){border-color:var(--saffron)}
+
+/* GRID / CARDS */
+.grid{max-width:1200px;margin:0 auto;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;padding:18px 22px 26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;display:flex;flex-direction:column;gap:11px;position:relative;
+  transition:transform .18s,box-shadow .2s,border-color .2s;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--catcolor,var(--navy));opacity:.9}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:transparent}
+.card.closed{opacity:.55;filter:grayscale(.7)}
+.card.closed::before{background:var(--muted)!important}
+.stamp{position:absolute;top:14px;right:14px;background:var(--red);color:#fff;
+  font-size:.7rem;font-weight:800;padding:4px 11px;border-radius:6px;transform:rotate(-6deg)}
+.new-badge{position:absolute;top:14px;right:14px;background:var(--green);color:#fff;
+  font-size:.7rem;font-weight:800;padding:4px 10px;border-radius:6px;
+  box-shadow:0 0 0 0 rgba(26,122,74,.5);animation:newPulse 2s infinite}
+@keyframes newPulse{0%{box-shadow:0 0 0 0 rgba(26,122,74,.5)}
+  70%{box-shadow:0 0 0 8px rgba(26,122,74,0)}100%{box-shadow:0 0 0 0 rgba(26,122,74,0)}}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.cat{font-size:.7rem;font-weight:800;padding:4px 11px;border-radius:999px;color:#fff;white-space:nowrap}
+.org{font-size:.76rem;color:var(--muted);text-align:right}
+.card h3{font-size:1.02rem;line-height:1.4;font-weight:700;cursor:pointer;
+  transition:color .15s;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card h3:hover{color:var(--saffron)}
+.card h3 .arrow{color:var(--muted);font-size:.9rem;flex-shrink:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:.78rem}
+.meta span{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:4px 10px;
+  display:inline-flex;align-items:center;gap:5px}
+body.dark .meta span{background:#0d1117}
+.meta .dd.red{color:var(--red);font-weight:800;border-color:rgba(192,57,43,.3)}
+.meta .dd.amber{color:var(--amber);font-weight:700;border-color:rgba(185,119,14,.3)}
+.meta .dd.green{color:var(--green);font-weight:700;border-color:rgba(26,122,74,.3)}
+.countdown{font-family:'SF Mono',ui-monospace,monospace;font-weight:700;font-size:.82rem;
+  color:var(--red);padding:8px 12px;border-radius:8px;background:rgba(192,57,43,.08);
+  border:1px dashed rgba(192,57,43,.35);display:flex;align-items:center;gap:8px;letter-spacing:.5px}
+body.dark .countdown{background:rgba(248,113,113,.1);border-color:rgba(248,113,113,.35);color:#f87171}
+.popular{display:flex;align-items:center;gap:6px;font-size:.74rem;color:var(--muted)}
+.popular .fire{color:var(--saffron)}
+.note{font-size:.76rem;background:#fff8ec;border:1px solid #f1e3c0;border-radius:9px;
+  padding:9px 11px;color:#7a5b12;line-height:1.55}
+body.dark .note{background:#3d2f1a;border-color:#5c4318;color:#fbbf24}
+.verify{font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:999px;display:inline-block}
+.v-verified{background:#e6f6ee;color:#14663d;border:1px solid #b7e2c8}
+.v-pending{background:#fff4e0;color:#8a5b00;border:1px solid #ecd39a}
+.v-unverified{background:#fdecea;color:#8f2318;border:1px solid #f2b8b0}
+body.dark .v-verified{background:#132e22;color:#4ade80;border-color:#1e4d35}
+body.dark .v-pending{background:#2e2412;color:#fbbf24;border-color:#4d3a1e}
+body.dark .v-unverified{background:#2e1412;color:#f87171;border-color:#4d1e1e}
+.btns{display:flex;gap:8px;margin-top:auto;flex-wrap:wrap}
+.btn{flex:1;text-align:center;padding:10px 8px;border-radius:9px;font-size:.83rem;
+  font-weight:700;text-decoration:none;cursor:pointer;border:none;min-width:100px;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:.15s}
+.btn:active{transform:scale(.97)}
+.apply{background:var(--saffron);color:#fff;box-shadow:0 3px 10px rgba(244,115,42,.3)}
+.apply:hover{box-shadow:0 5px 16px rgba(244,115,42,.45)}
+.pdfbtn{background:var(--navy);color:#fff}
+body.dark .pdfbtn{color:#0d1117}
+.btn-official{background:transparent;color:var(--navy);border:1.5px solid var(--navy);box-shadow:none}
+.btn-official:hover{background:var(--navy);color:#fff;box-shadow:0 4px 12px rgba(11,37,69,.25)}
+body.dark .btn-official{color:var(--navy);border-color:var(--navy)}
+body.dark .btn-official:hover{color:#0d1117}
+.btn.disabled{background:#94a3b8!important;color:#fff!important;cursor:not-allowed!important;
+  opacity:.7;box-shadow:none!important;transform:none!important}
+body.dark .btn.disabled{background:#475569!important;color:#cbd5e1!important}
+.btn.disabled:hover{transform:none!important;box-shadow:none!important;filter:none!important}
+.icon-actions{display:flex;gap:6px;margin-top:2px}
+.icon-act{width:38px;height:38px;border-radius:9px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:.15s}
+.icon-act:hover{border-color:var(--saffron);color:var(--saffron)}
+.icon-act.saved{background:var(--saffron);color:#fff;border-color:var(--saffron);
+  animation:heartPop .35s ease}
+@keyframes heartPop{0%{transform:scale(1)}50%{transform:scale(1.25)}100%{transform:scale(1)}}
+
+/* SKELETON */
+.skel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.skel-line{height:12px;background:linear-gradient(90deg,var(--line) 25%,var(--bg) 50%,var(--line) 75%);
+  background-size:200% 100%;border-radius:6px;animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-line.w70{width:70%}.skel-line.w40{width:40%}.skel-line.h32{height:32px}
+
+.slabel{max-width:1200px;margin:0 auto;padding:8px 22px;font-size:.85rem;font-weight:800;color:var(--muted)}
+.empty{padding:50px 22px;text-align:center;color:var(--muted);max-width:1200px;margin:0 auto}
+.empty .big{font-size:2.5rem;margin-bottom:8px}
+
+/* DETAIL VIEW */
+.detail-overlay{position:fixed;inset:0;background:var(--bg);z-index:250;display:none;flex-direction:column}
+.detail-overlay.open{display:flex}
+.detail-header{background:linear-gradient(120deg,var(--navy),var(--navy2));color:#fff;
+  padding:12px 18px;display:flex;align-items:center;gap:14px;flex-shrink:0;
+  box-shadow:0 2px 14px rgba(0,0,0,.15)}
+.detail-back{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:#fff;padding:8px 16px;border-radius:9px;cursor:pointer;font-weight:700;
+  font-size:.85rem;display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+.detail-back:hover{background:rgba(255,255,255,.25)}
+.detail-header-title{font-size:.92rem;font-weight:700;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;opacity:.95}
+.detail-content{flex:1;overflow-y:auto;padding:20px;max-width:900px;margin:0 auto;
+  width:100%;-webkit-overflow-scrolling:touch}
+.detail-hero{background:var(--card);border-radius:var(--radius);padding:22px;
+  border-top:4px solid var(--catcolor, var(--navy));margin-bottom:16px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.detail-cat{display:inline-block;color:#fff;font-size:.72rem;font-weight:800;
+  padding:4px 11px;border-radius:999px;margin-bottom:12px}
+.detail-hero h1{font-size:1.4rem;line-height:1.35;margin-bottom:8px;color:var(--ink)}
+.detail-org{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.detail-countdown{margin-bottom:16px;font-size:.9rem;padding:12px 16px}
+.detail-closed-badge{background:var(--red);color:#fff;display:inline-block;
+  padding:5px 12px;border-radius:8px;font-size:.78rem;font-weight:800;margin-bottom:14px}
+.detail-quickfacts{display:grid;grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));gap:10px}
+.qf{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+body.dark .qf{background:#0d1117}
+.qf-label{display:block;font-size:.72rem;color:var(--muted);margin-bottom:5px;font-weight:600}
+.qf-value{display:block;font-weight:800;font-size:.95rem;line-height:1.35}
+.qf-value.red{color:var(--red)}
+.qf-value.amber{color:var(--amber)}
+.qf-value.green{color:var(--green)}
+
+.detail-section{background:var(--card);border-radius:var(--radius);padding:20px;
+  margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.detail-section h3{font-size:1.02rem;margin-bottom:14px;color:var(--navy);
+  padding-bottom:8px;border-bottom:2px solid var(--saffron);display:inline-block}
+body.dark .detail-section h3{color:var(--saffron)}
+.detail-table{display:flex;flex-direction:column}
+.d-row{display:flex;justify-content:space-between;padding:11px 0;
+  border-bottom:1px dashed var(--line);font-size:.9rem;gap:12px;align-items:center}
+.d-row:last-child{border-bottom:none}
+.d-row span{color:var(--muted);flex-shrink:0}
+.d-row strong{text-align:right;font-weight:700}
+.d-row.d-highlight{background:rgba(192,57,43,.06);padding:11px 12px;border-radius:8px;
+  border-bottom:none;margin:4px -4px}
+body.dark .d-row.d-highlight{background:rgba(248,113,113,.1)}
+.d-row.d-highlight strong{color:var(--red)}
+.detail-section p{font-size:.92rem;line-height:1.7;color:var(--ink)}
+.detail-verify{text-align:center;padding:16px 0 24px}
+
+/* OFFLINE NOTICE */
+.offline-notice{background:#fff8ec;border-left:4px solid var(--amber);
+  padding:16px 18px;border-radius:10px;margin-bottom:14px;font-size:.92rem;line-height:1.65}
+body.dark .offline-notice{background:#2e2412;border-left-color:#fbbf24}
+.offline-notice h3{font-size:1rem;color:var(--amber);margin-bottom:10px;
+  padding:0!important;border:none!important}
+body.dark .offline-notice h3{color:#fbbf24}
+.offline-notice p{margin-bottom:8px;color:var(--ink)}
+body.dark .offline-notice p{color:#e6edf3}
+.offline-notice .offline-steps{background:rgba(185,119,14,.08);border-radius:8px;
+  padding:10px 14px;margin:10px 0;font-size:.88rem}
+.offline-notice .offline-address{background:var(--card);border:1px solid var(--line);
+  border-radius:8px;padding:10px 14px;margin-top:8px;font-size:.88rem;
+  font-family:'SF Mono',ui-monospace,monospace}
+
+/* FOOTER BUTTONS (sticky) */
+.detail-footer{background:var(--card);border-top:1px solid var(--line);
+  padding:14px 18px;padding-bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  display:flex;gap:12px;flex-shrink:0;box-shadow:0 -6px 24px rgba(0,0,0,.10);
+  position:relative;z-index:2}
+.detail-btn-apply,.detail-btn-notif,.detail-btn-official{flex:1;padding:15px 12px;border-radius:12px;
+  font-weight:800;font-size:.95rem;text-align:center;text-decoration:none;
+  display:flex;align-items:center;justify-content:center;gap:8px;transition:.15s;
+  border:none;cursor:pointer}
+.detail-btn-apply{background:var(--saffron);color:#fff;box-shadow:0 4px 14px rgba(244,115,42,.35)}
+.detail-btn-apply:hover{box-shadow:0 6px 20px rgba(244,115,42,.5);transform:translateY(-1px)}
+.detail-btn-notif{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(11,37,69,.25)}
+body.dark .detail-btn-notif{color:#0d1117;box-shadow:0 4px 14px rgba(88,166,255,.3)}
+.detail-btn-notif:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.detail-btn-official{background:transparent;color:var(--navy);border:2px solid var(--navy);box-shadow:none}
+.detail-btn-official:hover{background:var(--navy);color:#fff;transform:translateY(-1px)}
+body.dark .detail-btn-official{color:var(--navy);border-color:var(--navy)}
+body.dark .detail-btn-official:hover{color:#0d1117}
+.detail-btn-apply.disabled,.detail-btn-notif.disabled,.detail-btn-official.disabled{
+  background:#94a3b8!important;color:#fff!important;cursor:not-allowed!important;opacity:.7;
+  box-shadow:none!important;transform:none!important;border-color:#94a3b8!important}
+body.dark .detail-btn-apply.disabled,body.dark .detail-btn-notif.disabled,body.dark .detail-btn-official.disabled{
+  background:#475569!important;color:#cbd5e1!important;border-color:#475569!important}
+.detail-btn-apply.disabled:hover,.detail-btn-notif.disabled:hover,.detail-btn-official.disabled:hover{
+  transform:none!important;box-shadow:none!important;filter:none!important}
+
+@media(max-width:520px){
+  .detail-hero h1{font-size:1.15rem}
+  .detail-quickfacts{grid-template-columns:1fr 1fr}
+  .detail-footer{flex-wrap:wrap}
+  .detail-btn-apply,.detail-btn-notif,.detail-btn-official{flex:1 1 calc(50% - 6px);font-size:.82rem;padding:13px 6px}
+  .detail-header-title{font-size:.82rem}
+}
+
+/* SHARE MODAL */
+.overlay{position:fixed;inset:0;background:rgba(11,37,69,.6);display:none;
+  align-items:center;justify-content:center;padding:18px;z-index:300;backdrop-filter:blur(4px)}
+.overlay.open{display:flex}
+.share-modal{background:var(--card);border-radius:16px;padding:24px;width:min(380px,94vw);
+  box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.share-modal h3{font-size:1.1rem;margin-bottom:16px;text-align:center}
+.share-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.share-opt{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 8px;
+  border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer;
+  transition:.15s;font-size:.75rem;font-weight:700;color:var(--ink)}
+.share-opt:hover{border-color:var(--saffron);transform:translateY(-2px)}
+.share-opt .ico{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;color:#fff}
+.ico.wa{background:#25d366}.ico.fb{background:#1877f2}
+.ico.tg{background:#0088cc}.ico.copy{background:#64707f}
+.ico.native{background:var(--saffron)}.ico.x{background:#000}
+
+/* TOAST */
+.toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:400;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--navy);color:#fff;padding:12px 20px;border-radius:11px;
+  font-size:.86rem;font-weight:600;box-shadow:0 8px 30px rgba(0,0,0,.3);
+  animation:toastIn .3s ease;display:flex;align-items:center;gap:8px}
+body.dark .toast{color:#0d1117}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* BOTTOM CTA */
+.bottom-cta{max-width:1200px;margin:20px auto 0;padding:0 22px}
+.cta-card{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;
+  border-radius:16px;padding:28px;text-align:center;position:relative;overflow:hidden}
+.cta-card::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 80% 20%,rgba(244,115,42,.4),transparent 50%)}
+.cta-card > *{position:relative;z-index:1}
+.cta-card h3{font-size:1.3rem;margin-bottom:8px}
+.cta-card p{font-size:.9rem;opacity:.9;margin-bottom:18px}
+.cta-form{display:flex;gap:8px;max-width:420px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.cta-form input{flex:1 1 200px;padding:12px 16px;border-radius:11px;border:none;
+  font-size:.9rem;font-family:inherit;min-width:0}
+.cta-form button{background:var(--wa);color:#fff;border:none;padding:12px 22px;
+  border-radius:11px;font-weight:800;cursor:pointer;font-size:.9rem}
+.cta-form button:hover{filter:brightness(1.1)}
+
+/* FOOTER */
+footer{background:var(--navy);color:#cdd7e4;font-size:.74rem;padding:18px 22px;
+  line-height:1.7;margin-top:30px;text-align:center}
+body.dark footer{color:#8b949e}
+footer a{color:#fff;text-decoration:underline}
+
+@media(max-width:600px){.btn{flex:1 1 100%}.hero-cta .btn-hero{flex:1 1 100%;justify-content:center}}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    
+    <!-- PREMIUM ANIMATED IMAGE LOGO -->
+    <div class="logo-container">
+      <div class="logo-wrap">
+        <!-- YOUR IMAGE LINK IS NOW ACTIVE -->
+        <img src="https://i.ibb.co/zVkR01N1/logo-png.png" alt="MahaSarkariJobs Logo" class="logo-img">
+        <div class="logo-shine"></div>
+      </div>
+      <div class="live-dot" title="Live Updates"></div>
+    </div>
+    
+    <div>
+      <h1>MahaSarkariJobs</h1>
+      <div class="tag">सरकारी भरती 2026 — अधिकृत जाहिरातीवरून तपासलेल्या तारखा</div>
+    </div>
+  </div>
+
+  <nav class="desktop-nav" aria-label="मुख्य नेव्हिगेशन">
+    <a href="#" class="nav-link" data-cat="">सर्व भरती</a>
+    <a href="#" class="nav-link" data-cat="railway">रेल्वे</a>
+    <a href="#" class="nav-link" data-cat="bank">बँकिंग</a>
+    <a href="#" class="nav-link" data-cat="psu">PSU</a>
+    <a href="#" class="nav-link" data-cat="defence">रक्षा दल</a>
+  </nav>
+
+  <div class="header-actions">
+    <button class="icon-btn" id="darkToggle" aria-label="डार्क मोड">🌙</button>
+    <button class="icon-btn" id="savedToggle" aria-label="सेव्ह केलेल्या">🔖<span id="savedCount" style="font-size:.7rem;margin-left:-2px"></span></button>
+    <button class="menu-toggle" id="menuToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="मेनू">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="बंद करा">✕</button>
+  <nav aria-label="मोबाइल नेव्हिगेशन">
+    <a href="#" class="mobile-link" data-cat="">🏠 सर्व भरती</a>
+    <a href="#" class="mobile-link" data-cat="railway">🚆 रेल्वे</a>
+    <a href="#" class="mobile-link" data-cat="bank">🏦 बँकिंग</a>
+    <a href="#" class="mobile-link" data-cat="psu">🏭 PSU</a>
+    <a href="#" class="mobile-link" data-cat="central-govt">🏛️ केंद्र सरकार</a>
+    <a href="#" class="mobile-link" data-cat="defence">🛡️ रक्षा दल</a>
+    <a href="#" class="mobile-link" data-cat="education">🎓 शिक्षण</a>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="pulse-dot"></span> थेट अपडेट · दररोज तपासले जाते</div>
+    <h2>महाराष्ट्राचं <span>#1 विश्वासू</span> सरकारी भरती पोर्टल</h2>
+    <p class="hero-sub">अधिकृत जाहिरातींवरून पडताळलेल्या तारखा. कोणतीही चुकीची माहिती नाही. एकही भरती चुकवली नाही.</p>
+    <div class="hero-stats">
+      <div class="stat"><b id="statActive">—</b><small>सक्रिय भरती</small></div>
+      <div class="stat"><b id="statClosing">—</b><small>या आठवड्यात बंद</small></div>
+      <div class="stat"><b id="statVerified">100%</b><small>जाहिरातींवरून तपासलेलं</small></div>
+    </div>
+    <div class="hero-cta">
+      <button class="btn-hero btn-primary" onclick="scrollToSearch()">🔍 नोकरी शोधा</button>
+      <button class="btn-hero btn-ghost" onclick="scrollToCTA()">🔔 अलर्ट मिळवा</button>
+    </div>
+  </div>
+</section>
+
+<!-- URGENT STRIP -->
+<div class="urgent-wrap">
+  <div class="urgent-title">⏰ लवकर बंद होणाऱ्या भरती</div>
+  <div class="strip" id="strip"></div>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls-wrap">
+  <div class="controls">
+    <input id="q" type="search" placeholder="🔍 नोकरी शोधा — नाव किंवा संस्था..." aria-label="नोकरी शोधा"/>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="all" role="tab">सर्व <span class="cnt" id="cntAll"></span></button>
+      <button class="tab" data-tab="saved" role="tab">🔖 सेव्ह <span class="cnt" id="cntSaved">0</span></button>
+      <button class="tab" data-tab="closing" role="tab">⏰ बंद होणारी</button>
+    </div>
+    <select class="sort" id="sortBy" aria-label="क्रमवारी">
+      <option value="deadline">📅 अंतिम तारीख जवळची</option>
+      <option value="newest">🆕 नवीनतम</option>
+      <option value="popular">🔥 लोकप्रिय</option>
+    </select>
+  </div>
+  <div class="filters" id="filters" style="max-width:1200px;margin:10px auto 0"></div>
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="slabel" id="closedLabel" style="display:none">⬇ बंद झालेल्या भरती</div>
+<div class="grid" id="closedGrid"></div>
+<div class="empty" id="empty" style="display:none">
+  <div class="big">🔍</div>
+  <div>काही सापडलं नाही.</div>
+  <div style="margin-top:6px;font-size:.85rem">वेगळे फिल्टर किंवा शोध शब्द वापरून पहा.</div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta" id="ctaSection">
+  <div class="cta-card">
+    <h3>📲 नवीन भरती WhatsApp वर मिळवा</h3>
+    <p>रोज नवीन सरकारी भरती तुमच्या WhatsApp वर — विनामूल्य.</p>
+    <form class="cta-form" id="ctaForm">
+      <input type="text" id="ctaEmail" placeholder="तुमचा WhatsApp नंबर किंवा ईमेल" required/>
+      <button type="submit">सबस्क्राइब करा</button>
+    </form>
+    <div id="ctaStatus" style="margin-top:12px;font-size:.85rem"></div>
+  </div>
+</div>
+
+<!-- DETAIL VIEW -->
+<div class="detail-overlay" id="detailOverlay" role="dialog" aria-modal="true">
+  <div class="detail-header">
+    <button class="detail-back" onclick="closeDetail()">← मागे</button>
+    <div class="detail-header-title" id="dHeaderTitle"></div>
+  </div>
+  <div class="detail-content" id="dContent"></div>
+  <div class="detail-footer">
+    <a id="dApplyBtn" class="detail-btn-apply" href="#" target="_blank" rel="noopener noreferrer">🔗 Apply Online</a>
+    <a id="dNotifBtn" class="detail-btn-notif" href="#" target="_blank" rel="noopener noreferrer">📄 Notification</a>
+    <a id="dOfficialBtn" class="detail-btn-official" href="#" target="_blank" rel="noopener noreferrer">🌐 Official Website</a>
+  </div>
+</div>
+
+<!-- SHARE MODAL -->
+<div class="overlay" id="shareOv" role="dialog" aria-modal="true">
+  <div class="share-modal">
+    <h3 id="shareTitle">शेअर करा</h3>
+    <div class="share-grid" id="shareGrid"></div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<footer>
+  ⚠️ अस्वीकरण: सर्व तारीख, पात्रता, फी आणि अटी अधिकृत जाहिरातीप्रमाणेच असतात.
+  अर्ज करण्यापूर्वी अधिकृत जाहिरात PDF व संबंधित संकेतस्थळ काळजीपूर्वक वाचा.<br/>
+  ✔ शेवटचे सत्यापन: <span id="lastVerified"></span> · MahaSarkariJobs
+</footer>
+
+<script>
+/* ================================================================
+   CATEGORIES
+================================================================ */
+const CAT = {
+  railway:{label:"रेल्वे",color:"#2563eb"},
+  bank:{label:"बँकिंग",color:"#0e9f6e"},
+  psu:{label:"PSU",color:"#d97706"},
+  "central-govt":{label:"केंद्र सरकार",color:"#334155"},
+  defence:{label:"रक्षा दल",color:"#7c3aed"},
+  education:{label:"शिक्षण",color:"#be185d"}
+};
+
+/* ================================================================
+   JOBS DATA (FINAL VERIFIED LIST)
+================================================================ */
+const JOBS = [
+  {
+    title:"MPSC Group C संयुक्त भरती 2026 (16,717 जागा)",
+    org:"महाराष्ट्र लोकसेवा आयोग (MPSC)", posts:16717,
+    cat:"central-govt", location:"महाराष्ट्र",
+    qualification:"पदानुसार: पदवी / डिप्लोमा / ITI",
+    ageLimit:"18 – 40 वर्षे (पदानुसार)",
+    eligibility:"AMVI साठी अभियांत्रिकी पदवी + DL; Clerk-Typist साठी पदवी + टायपिंग; Talathi साठी कोणत्याही शाखेची पदवी.",
+    fees:{"सामान्य / OBC":"जाहिरातीत पहा","SC / ST / PwBD":"जाहिरातीत पहा"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"13 नोव्हेंबर 2026"},
+      {label:"अंतिम तारीख",value:"27 नोव्हेंबर 2026",highlight:true},
+      {label:"पूर्वपरीक्षा",value:"24 जानेवारी 2027"}
+    ],
+    lastDate:"2026-11-27", closesAtISO:null,
+    applyMode:"online", apply:"https://mpsconline.gov.in",
+    sourceUrl:"https://mpsconline.gov.in",
+    pdf:"pdfs/mpsc-group-c-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"महाराष्ट्रातील सर्वात मोठी राज्यस्तरीय भरती. अर्ज 13–27 नोव्हेंबर 2026.",
+    verificationStatus:"verified", addedDaysAgo:0, views:6120
+  },
+  {
+    title:"महसूल सेवक (कोतवाल) भरती 2026 — ठाणे जिल्हा",
+    org:"जिल्हाधिकारी कार्यालय, ठाणे", posts:null,
+    cat:"central-govt", location:"ठाणे, कल्याण, मुरबाड, आंबेरनाथ, भिवंडी, शहापूर",
+    qualification:"10वी / 12वी उत्तीर्ण", ageLimit:"जाहिरातीत पहा",
+    eligibility:"ठाणे जिल्ह्यातील संबंधित तालुक्यातील रहिवासी उमेदवार.",
+    importantDates:[
+      {label:"अर्ज सुरू",value:"7 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"30 नोव्हेंबर 2026",highlight:true}
+    ],
+    lastDate:"2026-11-30", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://thane.nic.in",
+    pdf:"pdfs/thane-kotwal-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"जिल्हाधिकारी कार्यालय, ठाणे — महसूल विभाग, कक्ष क्र. २०१, कलेक्टर कार्यालय, ठाणे – ४००६०१",
+    note:"अर्ज फक्त ऑफलाइन — PDF फॉर्म डाउनलोड करून भरा.",
+    verificationStatus:"verified", addedDaysAgo:1, views:980
+  },
+  {
+    title:"महसूल सेवक (कोतवाल) भरती 2026 — धुळे जिल्हा",
+    org:"जिल्हाधिकारी कार्यालय, धुळे", posts:null,
+    cat:"central-govt", location:"शिरपूर व शिंदखेडा तालुका, धुळे",
+    qualification:"10वी / 12वी उत्तीर्ण", ageLimit:"जाहिरातीत पहा",
+    eligibility:"शिरपूर व शिंदखेडा तालुक्यातील रहिवासी उमेदवार.",
+    importantDates:[
+      {label:"अर्ज सुरू",value:"5 नोव्हेंबर 2026"},
+      {label:"अंतिम तारीख",value:"31 डिसेंबर 2026",highlight:true}
+    ],
+    lastDate:"2026-12-31", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://dhule.gov.in",
+    pdf:"pdfs/dhule-kotwal-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"तहसीलदार कार्यालय, शिरपूर / शिंदखेडा, जिल्हा धुळे – ४२४००१",
+    note:"अर्ज फक्त ऑफलाइन — PDF फॉर्म डाउनलोड करून भरा.",
+    verificationStatus:"verified", addedDaysAgo:1, views:640
+  },
+  {
+    title:"Mumbai Port Authority Recruitment 2026 (6 Posts)",
+    org:"Mumbai Port Authority (MbPA)", posts:6,
+    cat:"central-govt", location:"मुंबई, महाराष्ट्र",
+    qualification:"पदवी + अनुभव (Catering / Welfare Officer)",
+    ageLimit:"30 – 40 वर्षे (पदानुसार)",
+    eligibility:"Catering Officer, Sr Welfare Officer, Deputy Manager, Deputy Director. पदवी + संबंधित अनुभव आवश्यक.",
+    fees:{"सर्व उमेदवार":"जाहिरातीत पहा"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"14 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"16 नोव्हेंबर 2026",highlight:true}
+    ],
+    lastDate:"2026-11-16", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://mumbaiport.gov.in",
+    pdf:"pdfs/mumbai-port-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"Sr. Deputy Secretary, HR Division, Port House, Ballard Estate, Mumbai – 400001",
+    note:"अर्ज ऑफलाइन — वर दिलेल्या पत्त्यावर पाठवा.",
+    verificationStatus:"verified", addedDaysAgo:2, views:420
+  },
+  {
+    title:"GMC Jalna Professor Recruitment 2026 (20 Posts)",
+    org:"Government Medical College, Jalna", posts:20,
+    cat:"central-govt", location:"जालना, महाराष्ट्र",
+    qualification:"MD / MS / DNB (संबंधित विषय)",
+    ageLimit:"Professor: 70; Asst Prof: 40/45",
+    eligibility:"Professor (6), Associate Professor (2), Assistant Professor (12). NMC-मान्य वैद्यकीय पदवी आवश्यक.",
+    fees:{"सर्व उमेदवार":"₹200 (अनॉ-रिफंडेबल)"},
+    importantDates:[
+      {label:"अंतिम तारीख",value:"12 नोव्हेंबर 2026",highlight:true},
+      {label:"वॉक-इन इंटरव्ह्यू",value:"17 नोव्हेंबर 2026"}
+    ],
+    lastDate:"2026-11-12", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://gmcmjalna.edu.in",
+    pdf:"pdfs/gmc-jalna-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"Dean, Government Medical College, Jalna – 431203 (Walk-in interview 17 Nov 2026)",
+    note:"थेट वॉक-इन इंटरव्ह्यू 17 नोव्हेंबर 2026.",
+    verificationStatus:"verified", addedDaysAgo:3, views:310
+  },
+  {
+    title:"RRB NTPC Undergraduate (CEN 07/2026)",
+    org:"रेल्वे भरती बोर्ड (RRB)", posts:1688,
+    cat:"railway", location:"संपूर्ण भारत",
+    qualification:"12वी उत्तीर्ण (कोणतेही स्ट्रीम)",
+    ageLimit:"18 – 30 वर्षे",
+    eligibility:"Commercial-cum-Ticket Clerk, Accounts Clerk-cum-Typist, Junior Clerk-cum-Typist, Trains Clerk.",
+    fees:{"सामान्य / OBC / EWS":"₹500","SC / ST / महिला / PwBD / माजी सैनिक":"₹250"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"15 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"13 नोव्हेंबर 2026",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"15 नोव्हेंबर 2026"},
+      {label:"CBT 1 परीक्षा",value:"डिसेंबर 2026 (तात्पुरती)"}
+    ],
+    lastDate:"2026-11-13", closesAtISO:null,
+    applyMode:"online", apply:"https://www.rrbapply.gov.in",
+    sourceUrl:"https://www.rrbapply.gov.in",
+    pdf:"pdfs/rrb-ntpc-cen07-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"उद्या (13 नोव्हेंबर) अंतिम तारीख! लगेच अर्ज करा.",
+    verificationStatus:"verified", addedDaysAgo:2, views:4210
+  },
+  {
+    title:"RRB Station Master (CEN 08/2026)",
+    org:"रेल्वे भरती बोर्ड (RRB)", posts:1215,
+    cat:"railway", location:"संपूर्ण भारत (Zonal Railways)",
+    qualification:"कोणत्याही मान्यताप्राप्त विद्यापीठातून पदवी (Graduate Degree)",
+    ageLimit:"20 – 33 वर्षे (01 जानेवारी 2027 रोजी)",
+    eligibility:"पदवीधर असणे अनिवार्य. निवड प्रक्रिया: CBT (100 प्रश्न, 120 मिनिटे) + CBAT (Aptitude Test) + Document Verification + Medical (A-2).",
+    fees:{"सामान्य / OBC / EWS":"₹500 (CBT दिल्यास ₹400 परत)","SC / ST / महिला / EWS / ExSM / EBC":"₹250 (CBT दिल्यास ₹250 परत)"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"27 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"25 नोव्हेंबर 2026 (23:59)",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"27 नोव्हेंबर 2026"},
+      {label:"सुधारणा विंडो",value:"28 नोव्हेंबर - 07 डिसेंबर 2026"}
+    ],
+    lastDate:"2026-11-25", closesAtISO:null,
+    applyMode:"online", apply:"https://www.rrbapply.gov.in",
+    sourceUrl:"https://rrb.indianrailways.gov.in",
+    pdf:"pdfs/rrb-station-master-cen08.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"1,215 जागा. CBT + CBAT च्या गुणांच्या आधारे निवड (70% CBT, 30% CBAT). डोळ्यांची तपासणी (Vision A-2) आवश्यक.",
+    verificationStatus:"verified", addedDaysAgo:0, views:2850
+  },
+  {
+    title:"RRB Isolated Categories (CEN 09/2026)",
+    org:"रेल्वे भरती बोर्ड (RRB)", posts:191,
+    cat:"railway", location:"संपूर्ण भारत",
+    qualification:"पदानुसार: पदवी / LLB / Master's Degree / Diploma (तपशील जाहिरातीत पहा)",
+    ageLimit:"18 – 40 वर्षे (पदानुसार, 01 जानेवारी 2027 रोजी)",
+    eligibility:"पदानुसार बदलते. Chief Law Assistant (LLB + 3 वर्षे अनुभव), Public Prosecutor (LLB + 5 वर्षे अनुभव), Junior Translator (Master's Degree + डिप्लोमा/अनुभव) इत्यादी. तपशील अधिकृत PDF मध्ये पहा.",
+    fees:{"सामान्य / OBC / EWS":"₹500 (CBT दिल्यास ₹400 परत)","SC / ST / महिला / ExSM / PwBD / EBC":"₹250 (CBT दिल्यास ₹250 परत)"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"05 नोव्हेंबर 2026"},
+      {label:"अंतिम तारीख",value:"04 डिसेंबर 2026 (23:59)",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"06 डिसेंबर 2026"},
+      {label:"सुधारणा विंडो",value:"07 - 16 डिसेंबर 2026"}
+    ],
+    lastDate:"2026-12-04", closesAtISO:null,
+    applyMode:"online", apply:"https://www.rrbapply.gov.in",
+    sourceUrl:"https://rrb.indianrailways.gov.in",
+    pdf:"pdfs/rrb-isolated-cen09-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"191 पदे (Chief Law Assistant, Public Prosecutor, Jr Translator, इत्यादी). निवड CBT + Translation Test (लागू असल्यास) द्वारे.",
+    verificationStatus:"verified", addedDaysAgo:0, views:1120
+  },
+  {
+    title:"Army TES-57 (10+2 तंत्रज्ञान प्रवेश)",
+    org:"भारतीय सेना", posts:90,
+    cat:"defence", location:"संपूर्ण भारत (IMA देहरादून)",
+    qualification:"12वी PCM 60% + JEE Main 2026",
+    ageLimit:"16½ – 19½ वर्षे (01 जुलै 2027 रोजी)",
+    eligibility:"अविवाहित पुरुष उमेदवार. 10+2 (PCM) मध्ये किमान 60% एकत्रित गुण. JEE (Main) 2026 मध्ये उपस्थित असणे अनिवार्य.",
+    fees:{"सर्व उमेदवार":"जाहिरातीत पहा"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"14 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"12 नोव्हेंबर 2026, 12:00",highlight:true},
+      {label:"SSB इंटरव्ह्यू",value:"डिसेंबर 2026 (तात्पुरते)"},
+      {label:"कोर्स सुरू",value:"जुलै 2027"}
+    ],
+    lastDate:"2026-11-12", closesAtISO:"2026-11-12T12:00:00+05:30",
+    applyMode:"online", apply:"https://joinindianarmy.nic.in",
+    sourceUrl:"https://joinindianarmy.nic.in",
+    pdf:"pdfs/army-tes-57-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"अर्ज 12 नोव्हेंबर दुपारी 12:00 वाजता बंद; JEE (Main) गुण अनिवार्य.",
+    verificationStatus:"verified", addedDaysAgo:1, views:4820
+  },
+  {
+    title:"MPSC Assistant (Legal) 2026 (14 Posts)",
+    org:"महाराष्ट्र लोकसेवा आयोग (MPSC)", posts:14,
+    cat:"central-govt", location:"महाराष्ट्र",
+    qualification:"LLB (कायदा पदवी)",
+    ageLimit:"पदानुसार",
+    eligibility:"Maharashtra Law & Judiciary Department अंतर्गत Assistant (Legal) पदे. LLB आवश्यक.",
+    importantDates:[{label:"अंतिम तारीख",value:"15 डिसेंबर 2026",highlight:true}],
+    lastDate:"2026-12-15", closesAtISO:null,
+    applyMode:"online", apply:"https://mpsconline.gov.in",
+    sourceUrl:"https://mpsconline.gov.in",
+    pdf:"pdfs/mpsc-assistant-legal-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"14 कायदा पदवीधर पदे. अर्ज mpsconline.gov.in वर.",
+    verificationStatus:"verified", addedDaysAgo:1, views:390
+  },
+  {
+    title:"BHEL Artisan भरती 2026 (660 Posts)",
+    org:"Bharat Heavy Electricals Limited (BHEL)", posts:660,
+    cat:"psu", location:"संपूर्ण भारत",
+    qualification:"10वी उत्तीर्ण + ITI (NTC) + NAC (संबंधित ट्रेड)",
+    ageLimit:"पदानुसार — जाहिरातीत पहा",
+    eligibility:"10वी + ITI (NTC) + National Apprenticeship Certificate (NAC) संबंधित ट्रेडमध्ये. फक्त ऑनलाइन अर्ज.",
+    fees:{"सामान्य / OBC / EWS":"जाहिरातीत पहा","SC / ST / PwBD / महिला":"जाहिरातीत पहा"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"21 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"18 नोव्हेंबर 2026 (11:45 PM)",highlight:true}
+    ],
+    lastDate:"2026-11-18", closesAtISO:null,
+    applyMode:"online", apply:"https://cdn.digialm.com/EForms/configuredHtml/33192/102813/o0zKIYO3CqWa8uMPmN/login.html",
+    sourceUrl:"https://careers.bhel.in",
+    pdf:"pdfs/bhel-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"660 Artisan पदे. अर्ज 21 ऑक्टोबर – 18 नोव्हेंबर 2026. एका उमेदवाराने फक्त एकाच युनिट व एकाच ट्रेडसाठी अर्ज करावा.",
+    verificationStatus:"verified", addedDaysAgo:1, views:3410
+  },
+  {
+    title:"BEL Probationary Engineer भरती 2026 (350 Posts)",
+    org:"Bharat Electronics Limited (BEL)", posts:350,
+    cat:"psu", location:"संपूर्ण भारत",
+    qualification:"First-Class B.E. / B.Tech. (Electronics / Mechanical) किंवा समतुल्य",
+    ageLimit:"कमाल 25 वर्षे (General/EWS, 01 ऑक्टोबर 2026 रोजी); OBC +3 वर्षे, SC/ST +5 वर्षे",
+    eligibility:"AICTE-मान्य संस्थेतून First-Class B.E./B.Tech. (Electronics & Communication / Telecommunication / Mechanical) किंवा First-Class AMIE / AMIETE / GIETE. फक्त ऑनलाइन अर्ज.",
+    fees:{"General / OBC (NCL) / EWS":"₹1,180","SC / ST / PwBD / Ex-Servicemen":"सूट"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"28 ऑक्टोबर 2026 (2:00 PM)"},
+      {label:"अंतिम तारीख",value:"18 नोव्हेंबर 2026 (11:59 PM)",highlight:true},
+      {label:"CBT परीक्षा",value:"22 डिसेंबर 2026 (तात्पुरती)"}
+    ],
+    lastDate:"2026-11-18", closesAtISO:null,
+    applyMode:"online", apply:"https://g06.tcsion.com/EForms/configuredHtml/33192/103061/uPVtXzjwivanf3RWlN/Index.html",
+    sourceUrl:"https://bel-india.in",
+    pdf:"pdfs/bel-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"350 Probationary Engineer पदे (Electronics 200, Mechanical 150). निवड प्रक्रिया: CBT (85 गुण) + Interview (15 गुण). CBT 22 डिसेंबर 2026.",
+    verificationStatus:"verified", addedDaysAgo:4, views:2110
+  },
+  {
+    title:"ONGC Apprentice भरती 2026 (3,047 जागा)", org:"ONGC", posts:3047,
+    cat:"psu", location:"संपूर्ण भारत",
+    qualification:"ITI / डिप्लोमा / पदवी (ट्रेडनुसार)",
+    ageLimit:"18 – 24 वर्षे",
+    eligibility:"ITI/डिप्लोमा/पदवी. उत्तीर्णानंतर 3 वर्षांची मर्यादा. जिल्हा-निवासी निकष लागू.",
+    importantDates:[{label:"अंतिम तारीख",value:"20 नोव्हेंबर 2026",highlight:true}],
+    lastDate:"2026-11-20", closesAtISO:null,
+    applyMode:"online", apply:"https://www.ongcapprentices.ongc.co.in",
+    sourceUrl:"https://www.ongcapprentices.ongc.co.in",
+    pdf:"pdfs/ongc-apprentice-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"अप्रेंटिसशिप — स्थायी नोकरी नाही. फक्त NAPS/NATS पोर्टलवर अर्ज.",
+    verificationStatus:"verified", addedDaysAgo:3, views:2560
+  },
+  {
+    title:"CWC Assistant Manager & Junior Executive भरती 2026 (327 Posts)",
+    org:"Central Warehousing Corporation (CWC)", posts:327,
+    cat:"central-govt", location:"संपूर्ण भारत",
+    qualification:"पदानुसार: PG (AM General), B.Tech/BE (AM Technical/Engineering), Commerce Graduate + 3 yrs exp / CA/CMA (AM Finance), Any Degree + Computer (JE General), B.Sc (JE Technical)",
+    ageLimit:"18 – 28 वर्षे (सवलतीसह)",
+    eligibility:"AM (General): Two-year PG Degree/PG Diploma (any discipline). AM (Technical): B.Tech/BE in Agriculture/Food Tech/Food Science/Biotech. AM (Finance): Commerce graduate + 3 yrs exp OR CA/CMA Inter with degree. AM (Engineering): BE/B.Tech in Civil/Electrical/Mechanical. JE (General): Any degree + computer knowledge. JE (Technical): B.Sc in relevant subject.",
+    fees:{"UR / EWS / OBC":"₹1,350","SC / ST / PwBD / Ex-Servicemen / Women":"₹500 (intimation charges)"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"17 ऑक्टोबर 2026"},
+      {label:"अंतिम तारीख",value:"15 नोव्हेंबर 2026",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"15 नोव्हेंबर 2026"}
+    ],
+    lastDate:"2026-11-15", closesAtISO:null,
+    applyMode:"online", apply:"https://ibpsreg.ibps.in/cwcaug26/",
+    sourceUrl:"https://cewacor.nic.in",
+    pdf:"pdfs/cwc-am-je-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"327 पदे: AM General 70, AM Technical 60, AM Finance 10, AM Civil 22, AM Electrical 5, AM Mechanical 4, JE General 78, JE Technical 78. ऑनलाइन परीक्षा (202 प्रश्न, 230 गुण, 3 तास).",
+    verificationStatus:"verified", addedDaysAgo:3, views:1580
+  },
+  {
+    title:"NLC India GET भरती 2026 (143 Posts)",
+    org:"NLC India Limited (NLCIL)", posts:143,
+    cat:"psu", location:"संपूर्ण भारत (Neyveli, Barsingsar, Talabira, South Pachwara, Tuticorin, Ghatampur)",
+    qualification:"संबंधित अभियांत्रिकी पदवी (B.E./B.Tech) 60% गुणांसह [SC/ST: 50%] + GATE 2025",
+    ageLimit:"कमाल 30 वर्षे (UR/EWS); OBC-NCL 33 वर्षे; SC/ST 35 वर्षे (01 नोव्हेंबर 2026 रोजी)",
+    eligibility:"Mechanical / Electrical / Civil / Mining अभियांत्रिकी पदवी 60% गुणांसह (SC/ST 50%). GATE 2025 मध्ये संबंधित पेपर कोडसह उत्तीर्ण असणे अनिवार्य. फक्त ऑनलाइन अर्ज.",
+    fees:{"General / OBC / EWS":"₹854","SC / ST / PwBD / Ex-Servicemen":"₹354"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"13 नोव्हेंबर 2026, 10:00 AM"},
+      {label:"अंतिम तारीख",value:"14 डिसेंबर 2026, 5:00 PM",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"14 डिसेंबर 2026, 11:45 PM"},
+      {label:"अंतिम अर्ज सबमिशन (नोंदणी + फी झालेल्यांसाठी)",value:"16 डिसेंबर 2026, 5:00 PM"}
+    ],
+    lastDate:"2026-12-14", closesAtISO:null,
+    applyMode:"online", apply:"https://www.nlcindia.in",
+    sourceUrl:"https://www.nlcindia.in",
+    pdf:"pdfs/nlc-get-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"143 GET पदे: Mechanical 66, Electrical 44, Civil 23, Mining 10. निवड GATE 2025 गुण (80) + Interview (20). मासिक बेसिक पगार ₹50,000; CTC ~₹14.5 लाख/वर्ष. 1 वर्ष प्रशिक्षण + ₹3 लाख सेवा बाँड.",
+    verificationStatus:"verified", addedDaysAgo:0, views:1340
+  },
+  {
+    title:"AEES Teaching Recruitment 2026 (254 Posts)",
+    org:"Atomic Energy Education Society (AEES) / DAE", posts:254,
+    cat:"education", location:"संपूर्ण भारत",
+    qualification:"पदानुसार: PG + B.Ed (PGT), Graduation + B.Ed + CTET (TGT), 12वी + D.El.Ed/B.El.Ed + CTET (PRT)",
+    ageLimit:"पदानुसार (22 नोव्हेंबर 2026 रोजी): Principal 35-50 वर्षे, Vice-Principal 35-45 वर्षे, PGT 40 वर्षे, TGT 35 वर्षे, PRT/Balvatika 30 वर्षे",
+    eligibility:"Principal/Vice-Principal: Master's degree + B.Ed + प्रशासकीय अनुभव. PGT: संबंधित विषयात PG + B.Ed. TGT: पदवी + B.Ed + CTET Paper 2. PRT: 12वी + D.El.Ed/B.El.Ed + CTET Paper 1. Librarian: Library Science पदवी/डिप्लोमा.",
+    fees:{"General / OBC / EWS":"₹1,000","Women / SC / ST / PwBD / Ex-Servicemen":"₹250"},
+    importantDates:[
+      {label:"अर्ज सुरू",value:"2 नोव्हेंबर 2026 (10:00 AM)"},
+      {label:"अंतिम तारीख",value:"22 नोव्हेंबर 2026 (11:50 PM)",highlight:true},
+      {label:"फी भरण्याची शेवटची तारीख",value:"22 नोव्हेंबर 2026 (11:50 PM)"}
+    ],
+    lastDate:"2026-11-22", closesAtISO:null,
+    applyMode:"online", apply:"https://aees.onlineregistrationforms.com/#/home",
+    sourceUrl:"https://www.aees.gov.in",
+    pdf:"pdfs/aees-teaching-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"254 पदे (Principal, Vice-Principal, PGT, TGT, PRT, Balvatika, Librarian). निवड CBT + Interview/Skill Test द्वारे. CBT: 75 प्रश्न, 75 गुण (2 तास).",
+    verificationStatus:"verified", addedDaysAgo:1, views:1340
+  },
+  {
+    title:"AFMS SSC Medical Officer भरती 2026 (120 Posts)",
+    org:"Armed Forces Medical Services (AFMS)", posts:120,
+    cat:"defence", location:"संपूर्ण भारत (Interviews in Delhi)",
+    qualification:"MBBS (किमान)",
+    ageLimit:"MBBS धारक: 30 वर्षांपेक्षा कमी; PG पदवी धारक: 35 वर्षांपेक्षा कमी (31 डिसेंबर 2026 रोजी)",
+    eligibility:"भारतीय नागरिक. MBBS पदवी (किमान) आवश्यक. शारीरिक आणि मानसिकदृष्ट्या तंदुरुस्त असणे आवश्यक. MBBS उमेदवारांचा जन्म 2 जानेवारी 1997 किंवा नंतर; PG उमेदवारांचा जन्म 2 जानेवारी 1992 किंवा नंतर असावा.",
+    fees:{"सर्व उमेदवार":"जाहिरातीत पहा"},
+    importantDates:[
+      {label:"अधिसूचना जारी (Employment News)",value:"7 नोव्हेंबर 2026"},
+      {label:"अर्ज सुरू",value:"9 नोव्हेंबर 2026"},
+      {label:"अंतिम तारीख",value:"18 नोव्हेंबर 2026",highlight:true},
+      {label:"मुलाखत (तात्पुरती)",value:"डिसेंबर 2026, दिल्ली"}
+    ],
+    lastDate:"2026-11-18", closesAtISO:null,
+    applyMode:"online", apply:"https://join.afms.gov.in/",
+    sourceUrl:"https://afms.gov.in",
+    pdf:"pdfs/afms-ssc-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"120 पदे: 90 पुरुष, 30 महिला. निवड मुलाखतीद्वारे (दिल्ली, डिसेंबर 2026). अर्ज 9–18 नोव्हेंबर 2026.",
+    verificationStatus:"verified", addedDaysAgo:2, views:1680
+  },
+  {
+    title:"CAPF SI LDCE 2026 (1,167 Posts)",
+    org:"Border Security Force (BSF) / MHA", posts:1167,
+    cat:"defence", location:"संपूर्ण भारत",
+    qualification:"पदवी (कोणतीही शाखा) + 4 वर्षे नियमित CAPF सेवा (मूलभूत प्रशिक्षणासह)",
+    ageLimit:"कमाल 32 वर्षे (31 डिसेंबर 2026 रोजी); SC/ST 5 वर्षे सवलत",
+    eligibility:"फक्त सेवारत CAPF कर्मचाऱ्यांसाठी (BSF, CRPF, ITBP, SSB). पदवी + 4 वर्षे नियमित सेवा. शेवटच्या 5 वर्षांत किमान 'Good' APAR ग्रेडिंग आणि स्वच्छ सेवा अभिलेख. वैद्यकीय श्रेणी SHAPE-I आवश्यक.",
+    fees:{"सर्व पात्र उमेदवार":"ऑनलाइन पोर्टलवर पहा (सूट असलेल्यांना फी भरावी लागत नाही)"},
+    importantDates:[
+      {label:"अधिसूचना जारी",value:"10 नोव्हेंबर 2026"},
+      {label:"अर्ज सुरू",value:"12 नोव्हेंबर 2026 (00:01 hrs)"},
+      {label:"अंतिम तारीख",value:"31 डिसेंबर 2026 (23:59 hrs)",highlight:true},
+      {label:"CBT परीक्षा",value:"लवकरच जाहीर होईल"}
+    ],
+    lastDate:"2026-12-31", closesAtISO:null,
+    applyMode:"online", apply:"https://rectt.bsf.gov.in/",
+    sourceUrl:"https://bsf.mha.gov.in/",
+    pdf:"pdfs/capf-si-ldce-2026.pdf", pdfAvailable:true, applyAvailable:true,
+    note:"1,167 पदे: BSF 235, CRPF 377, SSB 125, ITBP 430. CBT 200 गुण (3 तास 30 मिनिटे) + PST/PET + वैद्यकीय. जास्तीत जास्त 3 संधी. फक्त सेवारत CAPF कर्मचाऱ्यांसाठी (LDCE).",
+    verificationStatus:"verified", addedDaysAgo:0, views:2100
+  },
+  {
+    title:"NIA ASI / Head Constable / DEO 2026 (111 Posts)",
+    org:"National Investigation Agency (NIA)", posts:111,
+    cat:"central-govt", location:"संपूर्ण भारत",
+    qualification:"10वी / 12वी / पदवी (पदानुसार)",
+    ageLimit:"पदानुसार",
+    eligibility:"ASI, Head Constable, DEO आणि इतर पदे. तपशील NIA जाहिरातीत.",
+    importantDates:[{ label: "अंतिम तारीख", value: "20 डिसेंबर 2026", highlight: true }],
+    lastDate:"2026-12-20", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://www.nia.gov.in",
+    pdf:"pdfs/nia-asi-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"Deputy Inspector General (Admn), NIA HQ, CGO Complex, Lodhi Road, New Delhi – 110003",
+    note:"अर्ज फक्त ऑफलाइन — PDF फॉर्म डाउनलोड करून वर दिलेल्या पत्त्यावर पाठवा.",
+    verificationStatus:"verified", addedDaysAgo:1, views:420
+  },
+  {
+    title:"DGQA Technician Recruitment 2026 (32 Posts)",
+    org:"Ministry of Defence (DGQA)", posts:32,
+    cat:"central-govt", location:"संपूर्ण भारत",
+    qualification:"10वी + ITI",
+    ageLimit:"पदानुसार",
+    eligibility:"Technician पदे — ITI आवश्यक. अर्ज ऑफलाइन.",
+    importantDates:[{ label: "अंतिम तारीख", value: "6 डिसेंबर 2026", highlight: true }],
+    lastDate:"2026-12-06", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://www.mod.gov.in",
+    pdf:"pdfs/dgqa-tech-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"Director, DGQA, Ministry of Defence, Ayurvigyan Nagar, New Delhi – 110049",
+    note:"Advt No CQA (GS)/2026/1. अर्ज ऑफलाइन — वर दिलेल्या पत्त्यावर पाठवा.",
+    verificationStatus:"verified", addedDaysAgo:1, views:610
+  },
+  {
+    title:"Cabinet Secretariat DFO (Technical) भरती 2026",
+    org:"कॅबिनेट सचिवालय", posts:null,
+    cat:"central-govt", location:"दिल्ली / संपूर्ण भारत",
+    qualification:"अभियांत्रिकी पदवी + वैध GATE स्कोर",
+    ageLimit:"पदानुसार",
+    eligibility:"वैध GATE स्कोर अनिवार्य. ऑफलाइन अर्ज.",
+    importantDates:[{ label: "अंतिम तारीख", value: "15 नोव्हेंबर 2026", highlight: true }],
+    lastDate:"2026-11-15", closesAtISO:null,
+    applyMode:"offline", apply:null,
+    sourceUrl:"https://cabsec.gov.in",
+    pdf:"pdfs/cabsec-dfo-2026.pdf", pdfAvailable:true, applyAvailable:false,
+    offlineInstructions:"Under Secretary (Admn), Cabinet Secretariat, Rashtrapati Bhavan, New Delhi – 110004",
+    note:"ऑफलाइन अर्ज. GATE स्कोर अनिवार्य.",
+    verificationStatus:"verified", addedDaysAgo:7, views:780
+  }
+];
+
+/* ================================================================
+   STORAGE
+================================================================ */
+const store = {
+  get(key,def){try{return JSON.parse(localStorage.getItem("msj_"+key))??def}catch(e){return def}},
+  set(key,val){try{localStorage.setItem("msj_"+key,JSON.stringify(val))}catch(e){}}
+};
+let saved = new Set(store.get("saved",[]));
+let currentTab = "all";
+let currentFilter = null;
+
+/* ================================================================
+   DATE HELPERS
+================================================================ */
+const MN = {1:"जानेवारी",2:"फेब्रुवारी",3:"मार्च",4:"एप्रिल",5:"मे",6:"जून",
+  7:"जुलै",8:"ऑगस्ट",9:"सप्टेंबर",10:"ऑक्टोबर",11:"नोव्हेंबर",12:"डिसेंबर"};
+function parseDate(s){if(!s)return null;const [y,m,d]=s.split("-").map(Number);return new Date(y,m-1,d)}
+function formatDate(s){if(!s)return "—";const [y,m,d]=s.split("-");return `${Number(d)} ${MN[Number(m)]} ${y}`}
+function startOfToday(){const n=new Date();n.setHours(0,0,0,0);return n}
+function daysLeft(s){if(!s)return null;const e=parseDate(s);e.setHours(0,0,0,0);
+  return Math.round((e-startOfToday())/864e5)}
+function isClosed(j){if(j.closed===true)return true;
+  if(j.closesAtISO)return new Date()>=new Date(j.closesAtISO);
+  const r=daysLeft(j.lastDate);return r!==null&&r<0}
+function getDeadline(j){
+  if(isClosed(j))return {text:"अर्ज बंद",cls:"red"};
+  if(j.closesAtISO){
+    const e=new Date(j.closesAtISO),n=new Date(),h=Math.ceil((e-n)/36e5);
+    if(h<=0)return {text:"अर्ज बंद",cls:"red"};
+    if(h<=24)return {text:`आज ${h} तासांत बंद`,cls:"red"};
+    return {text:formatDate(j.lastDate),cls:"amber"};
+  }
+  const r=daysLeft(j.lastDate);
+  if(r===null)return {text:"तारीख साइटवर पहा",cls:"amber"};
+  if(r===0)return {text:"आज बंद!",cls:"red"};
+  if(r===1)return {text:"उद्या बंद!",cls:"red"};
+  return {text:`${r} दिवस बाकी`,cls:r<=3?"red":r<=7?"amber":"green"};
+}
+function timeAgo(days){
+  if(days===0)return "आज";
+  if(days===1)return "काल";
+  if(days<7)return `${days} दिवसांपूर्वी`;
+  if(days<30)return `${Math.floor(days/7)} आठवड्यांपूर्वी`;
+  return `${Math.floor(days/30)} महिन्यांपूर्वी`;
+}
+
+/* ================================================================
+   AVAILABILITY HELPERS
+================================================================ */
+function hasRealPDF(j){
+  return j.pdfAvailable === true && j.pdf && j.pdf.trim() !== "";
+}
+function hasRealApply(j){
+  return j.applyAvailable === true && j.apply && j.apply.trim() !== "";
+}
+function notifyUnavailable(type){
+  if(type==="pdf") toast("जाहिरात PDF अद्याप उपलब्ध नाही. लवकरच जोडले जाईल.","📄");
+  else toast("अर्ज लिंक अद्याप उपलब्ध नाही. अधिकृत जाहिरात तपासा.","🔗");
+}
+
+/* ================================================================
+   COUNTDOWN
+================================================================ */
+function tickCountdowns(){
+  document.querySelectorAll("[data-countdown]").forEach(el=>{
+    const iso = el.dataset.countdown;
+    const end = new Date(iso);
+    const diff = end - new Date();
+    if(diff<=0){el.textContent="⏱ अर्ज बंद झाला";return}
+    const d=Math.floor(diff/864e5);
+    const h=Math.floor((diff%864e5)/36e5);
+    const m=Math.floor((diff%36e5)/6e4);
+    const s=Math.floor((diff%6e4)/1000);
+    el.innerHTML=`<span>⏱</span> ${d>0?d+"दि ":""}${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")} बाकी`;
+  });
+}
+setInterval(tickCountdowns,1000);
+
+/* ================================================================
+   TOAST
+================================================================ */
+function toast(msg,icon="✓"){
+  const el = document.createElement("div");
+  el.className = "toast";
+  el.innerHTML = `<span>${icon}</span><span>${msg}</span>`;
+  document.getElementById("toastWrap").appendChild(el);
+  setTimeout(()=>{el.style.opacity="0";el.style.transform="translateY(10px)";
+    el.style.transition="all .3s";setTimeout(()=>el.remove(),300)},2200);
+}
+
+/* ================================================================
+   URGENT STRIP
+================================================================ */
+function renderStrip(){
+  const urgent = JOBS.filter(j=>!isClosed(j)).map(j=>({job:j,
+    rem:j.closesAtISO?Math.ceil((new Date(j.closesAtISO)-new Date())/864e5):daysLeft(j.lastDate)
+  })).filter(i=>i.rem!==null&&i.rem<=35).sort((a,b)=>a.rem-b.rem);
+
+  if(!urgent.length){
+    document.getElementById("strip").innerHTML =
+      `<div class="chip c-yellow"><b>सध्या 35 दिवसांत बंद होणारी भरती नाही</b></div>`;
+    return;
+  }
+  document.getElementById("strip").innerHTML = urgent.map(({job,rem})=>{
+    const cls = rem<=3?"c-red":rem<=7?"c-amber":"c-yellow";
+    let t = rem===0?"आज बंद!":rem===1?"उद्या बंद!":`${rem} दिवस बाकी`;
+    if(job.closesAtISO){
+      const h=Math.ceil((new Date(job.closesAtISO)-new Date())/36e5);
+      t = `आज दुपारी 12:00 बंद — ${h} तास`;
+    }
+    const short = job.title.replace(" भरती 2026","").replace(" भरती","");
+    return `<div class="chip ${cls}"><b>${short}</b>
+      <span class="d">${t}</span> · ${formatDate(job.lastDate)}</div>`;
+  }).join("");
+}
+
+/* ================================================================
+   BADGES
+================================================================ */
+function verifyBadge(s){
+  if(s==="verified")return `<span class="verify v-verified">✔ अधिकृतरित्या तपासले</span>`;
+  if(s==="pending")return `<span class="verify v-pending">⏳ तपासणी प्रक्रियेत</span>`;
+  return `<span class="verify v-unverified">⚠️ तपासणी बाकी</span>`;
+}
+
+/* ================================================================
+   BUTTONS
+================================================================ */
+function applyBtn(j){
+  if (isClosed(j)) return "";
+  if (j.applyMode === "offline") return "";
+  if (hasRealApply(j)) {
+    return `<a class="btn apply" href="${j.apply}" target="_blank" rel="noopener noreferrer">अर्ज करा →</a>`;
+  }
+  return `<button class="btn apply disabled" onclick="notifyUnavailable('apply')" title="अर्ज लिंक उपलब्ध नाही">अर्ज लिंक उपलब्ध नाही</button>`;
+}
+function docBtn(j){
+  if (hasRealPDF(j)) {
+    const label = j.applyMode === "offline" ? "📄 अर्ज फॉर्म / PDF" : "📄 जाहिरात PDF";
+    return `<a class="btn pdfbtn" href="${j.pdf}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+  }
+  return `<button class="btn pdfbtn disabled" onclick="notifyUnavailable('pdf')" title="PDF अद्याप उपलब्ध नाही">📄 PDF उपलब्ध नाही</button>`;
+}
+function officialBtn(j){
+  const url = j.sourceUrl || j.apply;
+  if(!url) return "";
+  return `<a class="btn btn-official" href="${url}" target="_blank" rel="noopener noreferrer">🌐 अधिकृत साइट</a>`;
+}
+
+/* ================================================================
+   CARD
+================================================================ */
+function cardHTML(j,i){
+  const c = CAT[j.cat];
+  const d = getDeadline(j);
+  const closed = isClosed(j);
+  const isSaved = saved.has(j.title);
+  const isNew = (j.addedDaysAgo??99) <= 2;
+  const showCountdown = !closed && j.closesAtISO && (new Date(j.closesAtISO)-new Date())>0;
+  const pop = Math.floor((j.views||0)/100)*100;
+
+  return `
+  <article class="card ${closed?"closed":""}" style="--catcolor:${c.color}">
+    ${closed?`<div class="stamp">बंद</div>`:isNew?`<div class="new-badge">✨ नवीन</div>`:""}
+    <div class="card-top">
+      <span class="cat" style="background:${c.color}">${c.label}</span>
+      <span class="org">${j.org}</span>
+    </div>
+    <h3 onclick="openDetail(${i})" title="तपशील पहा">${j.title}<span class="arrow">›</span></h3>
+    <div class="meta">
+      ${j.posts?`<span>👥 ${j.posts.toLocaleString("en-IN")} जागा</span>`:""}
+      ${j.location?`<span>📍 ${j.location}</span>`:""}
+      <span class="dd ${d.cls}">📅 ${d.text}</span>
+      ${j.applyMode === "offline"
+        ? `<span style="background:var(--amber);color:#fff;border-color:var(--amber);font-weight:800;">📮 ऑफलाइन अर्ज</span>`
+        : ""}
+    </div>
+    ${showCountdown?`<div class="countdown" data-countdown="${j.closesAtISO}"></div>`:""}
+    ${!closed&&!showCountdown&&j.addedDaysAgo!=null?`<div class="popular"><span class="fire">🔥</span> ${pop.toLocaleString("en-IN")}+ लोकांनी पाहिलं · ${timeAgo(j.addedDaysAgo)}</div>`:""}
+    <div>${verifyBadge(j.verificationStatus)}</div>
+    ${j.note?`<div class="note">⚠️ ${j.note}</div>`:""}
+    <div class="btns">
+      ${applyBtn(j)}
+      ${docBtn(j)}
+      ${officialBtn(j)}
+    </div>
+    <div class="icon-actions">
+      <button class="icon-act" onclick="openDetail(${i})" title="तपशील" aria-label="तपशील">👁</button>
+      <button class="icon-act ${isSaved?"saved":""}" onclick="toggleSave(${i})" title="${isSaved?"सेव्ह काढा":"सेव्ह करा"}" aria-label="सेव्ह">
+        ${isSaved?"♥":"♡"}
+      </button>
+      <button class="icon-act" onclick="openShare(${i})" title="शेअर" aria-label="शेअर">↗</button>
+      <button class="icon-act" onclick="remindMe(${i})" title="रिमाइंडर" aria-label="रिमाइंडर">🔔</button>
+    </div>
+  </article>`;
+}
+
+/* ================================================================
+   DETAIL VIEW
+================================================================ */
+function openDetail(i){
+  const j = JOBS[i];
+  const c = CAT[j.cat];
+  const d = getDeadline(j);
+  const closed = isClosed(j);
+  const showCountdown = !closed && j.closesAtISO && (new Date(j.closesAtISO)-new Date())>0;
+
+  document.getElementById("dHeaderTitle").textContent = j.title;
+
+  const quickFacts = `
+    <div class="qf">
+      <span class="qf-label">📅 अंतिम तारीख</span>
+      <span class="qf-value ${d.cls}">${d.text}</span>
+    </div>
+    <div class="qf">
+      <span class="qf-label">👥 एकूण जागा</span>
+      <span class="qf-value">${j.posts ? j.posts.toLocaleString("en-IN") : "जाहिरातीत पहा"}</span>
+    </div>
+    <div class="qf">
+      <span class="qf-label">📍 ठिकाण</span>
+      <span class="qf-value">${j.location || "अखिल भारतीय"}</span>
+    </div>
+    <div class="qf">
+      <span class="qf-label">🎓 पात्रता</span>
+      <span class="qf-value">${j.qualification || "जाहिरातीत पहा"}</span>
+    </div>
+  `;
+
+  const offlineNoticeHTML = j.applyMode === "offline" ? `
+    <div class="offline-notice">
+      <h3>📮 अर्ज प्रक्रिया — केवळ ऑफलाइन</h3>
+      <p><strong>या भरतीसाठी ऑनलाइन अर्ज स्वीकारले जात नाहीत.</strong></p>
+      <div class="offline-steps">
+        <strong>अर्ज कसा करावा:</strong><br>
+        १. खालील <b>Notification</b> बटणावर क्लिक करून अधिकृत जाहिरात PDF डाउनलोड करा.<br>
+        २. PDF मधील <b>अर्ज फॉर्म</b> प्रिंट करा किंवा हस्तलिखित प्रत तयार करा.<br>
+        ३. सर्व आवश्यक कागदपत्रे जोडा (शैक्षणिक प्रमाणपत्रे, फोटो, सही, जात प्रमाणपत्र इ.).<br>
+        ४. भरलेला फॉर्म जाहिरातीत दिलेल्या पत्त्यावर <b>नोंदणीकृत पोस्टाने</b> किंवा <b>हातात देऊन</b> पाठवा.<br>
+        ५. अंतिम तारखेपर्यंत अर्ज <b>पोहोचणे</b> आवश्यक आहे (पाठवण्याची तारीख विचारात घेतली जाणार नाही).
+      </div>
+      ${j.offlineInstructions ? `<p><strong>अर्ज पाठवण्याचा पत्ता:</strong></p><div class="offline-address">${j.offlineInstructions}</div>` : ""}
+      ${j.lastDate ? `<p style="margin-top:12px;font-size:.85rem;color:var(--muted);">
+        ⏰ अंतिम तारीख: <strong>${formatDate(j.lastDate)}</strong>
+      </p>` : ""}
+    </div>
+  ` : "";
+
+  const datesHTML = (j.importantDates && j.importantDates.length) ? `
+    <div class="detail-section">
+      <h3>📅 महत्त्वाच्या तारखा</h3>
+      <div class="detail-table">
+        ${j.importantDates.map(dd=>`
+          <div class="d-row ${dd.highlight?"d-highlight":""}">
+            <span>${dd.label}</span>
+            <strong>${dd.value}</strong>
+          </div>
+        `).join("")}
+      </div>
+    </div>` : "";
+
+  const feesHTML = (j.fees && Object.keys(j.fees).length) ? `
+    <div class="detail-section">
+      <h3>💰 अर्ज शुल्क</h3>
+      <div class="detail-table">
+        ${Object.entries(j.fees).map(([k,v])=>`
+          <div class="d-row">
+            <span>${k}</span>
+            <strong>${v}</strong>
+          </div>
+        `).join("")}
+      </div>
+    </div>` : "";
+
+  const eligibilityHTML = j.eligibility ? `
+    <div class="detail-section">
+      <h3>✅ पात्रता</h3>
+      <p>${j.eligibility}</p>
+    </div>` : "";
+
+  const ageHTML = j.ageLimit ? `
+    <div class="detail-section">
+      <h3>👤 वयोमर्यादा</h3>
+      <p>${j.ageLimit}</p>
+    </div>` : "";
+
+  const noteHTML = j.note ? `
+    <div class="detail-section">
+      <div class="note">⚠️ ${j.note}</div>
+    </div>` : "";
+
+  document.getElementById("dContent").innerHTML = `
+    <div class="detail-hero" style="--catcolor:${c.color}">
+      <span class="detail-cat" style="background:${c.color}">${c.label}</span>
+      <h1>${j.title}</h1>
+      <p class="detail-org">🏢 ${j.org}</p>
+      ${closed?`<div class="detail-closed-badge">अर्ज बंद</div>`:""}
+      ${showCountdown?`<div class="countdown detail-countdown" data-countdown="${j.closesAtISO}"></div>`:""}
+      <div class="detail-quickfacts">${quickFacts}</div>
+    </div>
+    ${offlineNoticeHTML}
+    ${datesHTML}
+    ${feesHTML}
+    ${eligibilityHTML}
+    ${ageHTML}
+    ${noteHTML}
+    <div class="detail-verify">${verifyBadge(j.verificationStatus)}</div>
+  `;
+
+  /* ---------- FOOTER BUTTONS (3) ---------- */
+  const applyEl    = document.getElementById("dApplyBtn");
+  const notifEl    = document.getElementById("dNotifBtn");
+  const officialEl = document.getElementById("dOfficialBtn");
+
+  // --- APPLY ONLINE ---
+  if (j.applyMode === "offline" || isClosed(j)) {
+    applyEl.style.display = "none";
+    applyEl.onclick = null;
+  } else if (hasRealApply(j)) {
+    applyEl.style.display = "";
+    applyEl.href = j.apply;
+    applyEl.textContent = "🔗 Apply Online";
+    applyEl.classList.remove("disabled");
+    applyEl.setAttribute("target", "_blank");
+    applyEl.onclick = null;
+  } else {
+    applyEl.style.display = "";
+    applyEl.href = "javascript:void(0)";
+    applyEl.textContent = "अर्ज लिंक उपलब्ध नाही";
+    applyEl.classList.add("disabled");
+    applyEl.removeAttribute("target");
+    applyEl.onclick = (e) => { e.preventDefault(); notifyUnavailable("apply"); };
+  }
+
+  // --- NOTIFICATION ---
+  if (hasRealPDF(j)) {
+    notifEl.href = j.pdf;
+    notifEl.textContent = j.applyMode === "offline" ? "📄 अर्ज फॉर्म / PDF" : "📄 Notification";
+    notifEl.classList.remove("disabled");
+    notifEl.setAttribute("target", "_blank");
+    notifEl.onclick = null;
+  } else {
+    notifEl.href = "javascript:void(0)";
+    notifEl.textContent = "📄 PDF उपलब्ध नाही";
+    notifEl.classList.add("disabled");
+    notifEl.removeAttribute("target");
+    notifEl.onclick = (e) => { e.preventDefault(); notifyUnavailable("pdf"); };
+  }
+
+  // --- OFFICIAL WEBSITE ---
+  const officialUrl = j.sourceUrl || j.apply;
+  if (officialUrl) {
+    officialEl.style.display = "";
+    officialEl.href = officialUrl;
+    officialEl.textContent = "🌐 Official Website";
+    officialEl.classList.remove("disabled");
+    officialEl.setAttribute("target", "_blank");
+    officialEl.onclick = null;
+  } else {
+    officialEl.style.display = "none";
+    officialEl.onclick = null;
+  }
+
+  document.getElementById("dContent").scrollTop = 0;
+  document.getElementById("detailOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+  tickCountdowns();
+}
+
+function closeDetail(){
+  document.getElementById("detailOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+/* ================================================================
+   SAVE / SHARE / REMIND
+================================================================ */
+function toggleSave(i){
+  const t = JOBS[i].title;
+  if(saved.has(t)){saved.delete(t);toast("सेव्हमधून काढलं","♡")}
+  else{saved.add(t);toast("सेव्ह केलं! ब्राउझरमध्ये जतन होईल","♥")}
+  store.set("saved",[...saved]);
+  updateSavedCount();
+  render();
+}
+function updateSavedCount(){
+  const n = saved.size;
+  document.getElementById("cntSaved").textContent = n;
+  document.getElementById("savedCount").textContent = n>0?n:"";
+}
+
+function openShare(i){
+  const j = JOBS[i];
+  const text = `🔥 ${j.title}\n🏢 ${j.org}\n⏰ अंतिम तारीख: ${formatDate(j.lastDate)}\n👉 MahaSarkariJobs वर पहा`;
+  const url = location.href;
+  const full = encodeURIComponent(text+"\n"+url);
+  document.getElementById("shareTitle").textContent = "शेअर करा: "+j.title;
+  document.getElementById("shareGrid").innerHTML = `
+    <a class="share-opt" href="https://wa.me/?text=${full}" target="_blank" rel="noopener">
+      <div class="ico wa">💬</div>WhatsApp</a>
+    <a class="share-opt" href="https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}" target="_blank" rel="noopener">
+      <div class="ico tg">✈</div>Telegram</a>
+    <a class="share-opt" href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">
+      <div class="ico fb">f</div>Facebook</a>
+    <button class="share-opt" onclick="copyShare('${encodeURIComponent(text+"\n"+url)}')">
+      <div class="ico copy">📋</div>कॉपी</button>
+    <button class="share-opt" onclick="nativeShare('${encodeURIComponent(text+"\n"+url)}')">
+      <div class="ico native">📤</div>इतर</button>
+    <button class="share-opt" onclick="closeShare()">
+      <div class="ico x">✕</div>बंद</button>`;
+  document.getElementById("shareOv").classList.add("open");
+}
+function closeShare(){document.getElementById("shareOv").classList.remove("open")}
+function copyShare(enc){
+  navigator.clipboard.writeText(decodeURIComponent(enc)).then(()=>{
+    toast("लिंक कॉपी झाली!","📋");closeShare();
+  }).catch(()=>toast("कॉपी अयशस्वी","⚠"));
+}
+function nativeShare(enc){
+  const text = decodeURIComponent(enc);
+  if(navigator.share){navigator.share({text}).then(()=>closeShare()).catch(()=>{});}
+  else{copyShare(enc)}
+}
+
+async function remindMe(i){
+  const j = JOBS[i];
+  if(!j.lastDate){toast("तारीख उपलब्ध नाही","⚠");return}
+  if("Notification" in window && Notification.permission==="default"){
+    await Notification.requestPermission();
+  }
+  const reminders = store.get("reminders",[]);
+  if(!reminders.includes(j.title)){
+    reminders.push(j.title);
+    store.set("reminders",reminders);
+    toast("रिमाइंडर सेट! अंतिम तारखेच्या 1 दिवस आधी सूचना","🔔");
+  }else{
+    toast("आधीच रिमाइंडर सेट आहे","ℹ");
+  }
+}
+function checkReminders(){
+  if(!("Notification" in window)||Notification.permission!=="granted")return;
+  const reminders = store.get("reminders",[]);
+  JOBS.forEach(j=>{
+    if(!reminders.includes(j.title))return;
+    const r = daysLeft(j.lastDate);
+    if(r===1||r===0){
+      new Notification("⏰ MahaSarkariJobs रिमाइंडर",{
+        body:`${j.title} ची अंतिम तारीख ${r===0?"आज":"उद्या"} आहे!`,
+        icon:"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔔</text></svg>"
+      });
+    }
+  });
+}
+
+/* ================================================================
+   RENDER
+================================================================ */
+function render(){
+  const q = document.getElementById("q").value.trim().toLowerCase();
+  const sort = document.getElementById("sortBy").value;
+
+  const items = JOBS.map((j,i)=>({job:j,i}));
+
+  let pool = items.filter(({job})=>{
+    if(currentFilter && job.cat!==currentFilter) return false;
+    if(q && !`${job.title} ${job.org}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  if(currentTab==="saved") pool = pool.filter(({job})=>saved.has(job.title));
+  if(currentTab==="closing") pool = pool.filter(({job})=>!isClosed(job)&&daysLeft(job.lastDate)!=null&&daysLeft(job.lastDate)<=7);
+
+  const active = pool.filter(({job})=>!isClosed(job));
+  const closed = pool.filter(({job})=>isClosed(job));
+
+  const sortFn = sort==="newest"?(a,b)=>(a.job.addedDaysAgo??99)-(b.job.addedDaysAgo??99)
+    : sort==="popular"?(a,b)=>(b.job.views||0)-(a.job.views||0)
+    : (a,b)=>{const da=daysLeft(a.job.lastDate)??999,db=daysLeft(b.job.lastDate)??999;return da-db};
+
+  active.sort(sortFn); closed.sort(sortFn);
+
+  document.getElementById("grid").innerHTML = active.map(({job,i})=>cardHTML(job,i)).join("");
+  document.getElementById("closedGrid").innerHTML = closed.map(({job,i})=>cardHTML(job,i)).join("");
+  document.getElementById("closedLabel").style.display = closed.length?"block":"none";
+  document.getElementById("empty").style.display = active.length?"none":"block";
+  document.getElementById("cntAll").textContent = active.length;
+
+  tickCountdowns();
+}
+
+/* ================================================================
+   FILTERS
+================================================================ */
+function buildFilters(){
+  const cats = [...new Set(JOBS.map(j=>j.cat))];
+  document.getElementById("filters").innerHTML =
+    `<button class="fbtn on" data-c="">सर्व</button>` +
+    cats.map(c=>`<button class="fbtn" data-c="${c}">${CAT[c].label}</button>`).join("");
+  document.querySelectorAll(".fbtn").forEach(b=>{
+    b.addEventListener("click",()=>{
+      currentFilter = b.dataset.c || null;
+      document.querySelectorAll(".fbtn").forEach(x=>x.classList.toggle("on",x===b));
+      render();
+    });
+  });
+}
+
+/* ================================================================
+   TABS / SORT / SEARCH
+================================================================ */
+document.querySelectorAll(".tab").forEach(t=>{
+  t.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    currentTab = t.dataset.tab;
+    render();
+  });
+});
+document.getElementById("sortBy").addEventListener("change",render);
+document.getElementById("q").addEventListener("input",render);
+
+/* ================================================================
+   MOBILE MENU
+================================================================ */
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+const mobileMenuClose = document.getElementById("mobileMenuClose");
+function openMobileMenu(){
+  mobileMenu.classList.add("open");
+  mobileMenu.setAttribute("aria-hidden","false");
+  menuToggle.setAttribute("aria-expanded","true");
+  document.body.classList.add("menu-open");
+  document.body.style.overflow="hidden";
+  mobileMenuClose.focus();
+}
+function closeMobileMenu(){
+  mobileMenu.classList.remove("open");
+  mobileMenu.setAttribute("aria-hidden","true");
+  menuToggle.setAttribute("aria-expanded","false");
+  document.body.classList.remove("menu-open");
+  document.body.style.overflow="";
+  menuToggle.focus();
+}
+menuToggle.addEventListener("click",()=>{
+  menuToggle.getAttribute("aria-expanded")==="true"?closeMobileMenu():openMobileMenu();
+});
+mobileMenuClose.addEventListener("click",closeMobileMenu);
+window.addEventListener("resize",()=>{
+  if(window.innerWidth>768 && mobileMenu.classList.contains("open")) closeMobileMenu();
+});
+
+document.querySelectorAll(".nav-link, .mobile-link").forEach(l=>{
+  l.addEventListener("click",e=>{
+    e.preventDefault();
+    const cat = l.dataset.cat || null;
+    currentFilter = cat;
+    document.querySelectorAll(".fbtn").forEach(b=>b.classList.toggle("on",(b.dataset.c||null)===cat));
+    render();
+    if(mobileMenu.classList.contains("open")) closeMobileMenu();
+  });
+});
+
+/* ================================================================
+   DARK MODE
+================================================================ */
+const darkToggle = document.getElementById("darkToggle");
+function applyDark(isDark){
+  document.body.classList.toggle("dark",isDark);
+  darkToggle.textContent = isDark?"☀️":"🌙";
+  store.set("dark",isDark);
+}
+darkToggle.addEventListener("click",()=>applyDark(!document.body.classList.contains("dark")));
+
+/* ================================================================
+   MODAL EVENTS
+================================================================ */
+document.getElementById("shareOv").addEventListener("click",e=>{if(e.target.id==="shareOv")closeShare()});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    if(document.getElementById("shareOv").classList.contains("open")) closeShare();
+    if(document.getElementById("detailOverlay").classList.contains("open")) closeDetail();
+    if(mobileMenu.classList.contains("open")) closeMobileMenu();
+  }
+});
+
+document.getElementById("savedToggle").addEventListener("click",()=>{
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  document.querySelector('.tab[data-tab="saved"]').classList.add("active");
+  currentTab = "saved";
+  render();
+  document.getElementById("q").scrollIntoView({behavior:"smooth",block:"center"});
+});
+
+/* ================================================================
+   CTA
+================================================================ */
+function scrollToSearch(){
+  document.getElementById("q").focus();
+  window.scrollTo({top:document.querySelector('.controls-wrap').offsetTop-80,behavior:'smooth'});
+}
+function scrollToCTA(){
+  document.getElementById("ctaSection").scrollIntoView({behavior:"smooth",block:"center"});
+  setTimeout(()=>document.getElementById("ctaEmail").focus(),500);
+}
+document.getElementById("ctaForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const v = document.getElementById("ctaEmail").value.trim();
+  if(!v)return;
+  store.set("subscribed",v);
+  document.getElementById("ctaStatus").innerHTML =
+    `<span style="color:#4ade80">✔ धन्यवाद! ${v} साठी अलर्ट सुरू केले.</span>`;
+  toast("सबस्क्राइब यशस्वी! 🎉","✅");
+  e.target.reset();
+});
+
+/* ================================================================
+   SKELETON + INIT
+================================================================ */
+function showSkeleton(){
+  const sk = Array(6).fill(0).map(()=>`
+    <div class="skel">
+      <div class="skel-line w40"></div>
+      <div class="skel-line w70"></div>
+      <div class="skel-line"></div>
+      <div class="skel-line h32"></div>
+    </div>`).join("");
+  document.getElementById("grid").innerHTML = sk;
+}
+
+function init(){
+  applyDark(store.get("dark",false));
+
+  const activeN = JOBS.filter(j=>!isClosed(j)).length;
+  const closingN = JOBS.filter(j=>{const r=daysLeft(j.lastDate);return !isClosed(j)&&r!=null&&r<=7}).length;
+  document.getElementById("statActive").textContent = activeN;
+  document.getElementById("statClosing").textContent = closingN;
+  document.getElementById("lastVerified").textContent = "12 नोव्हेंबर 2026";
+  document.getElementById("cntAll").textContent = activeN;
+
+  updateSavedCount();
+
+  showSkeleton();
+  setTimeout(()=>{
+    renderStrip();
+    buildFilters();
+    render();
+    checkReminders();
+  },300);
+}
+
+init();
+</script>
+
+</body>
+</html>
